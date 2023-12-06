@@ -3,11 +3,11 @@ package com.ivoyant.SpringBootTelecommunication.Entity;
 import com.ivoyant.SpringBootTelecommunication.Entity.Enums.PaymentType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -54,6 +54,7 @@ public class Payment {
         this.timeOfPayment = timeOfPayment;
     }
 
+
     public PaymentType getPaymentType() {
         return paymentType;
     }
@@ -62,26 +63,26 @@ public class Payment {
         this.paymentType = paymentType;
     }
 
-    public Date getPlanActivatedAt() {
+    public LocalDate getPlanActivatedAt() {
         return planActivatedAt;
     }
 
-    public void setPlanActivatedAt(Date planActivatedAt) {
+    public void setPlanActivatedAt(LocalDate planActivatedAt) {
         this.planActivatedAt = planActivatedAt;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+    @Column(unique = true)
     private long phoneNumber;
     private int price;
     private String status;
+    @CreationTimestamp
     private LocalDateTime timeOfPayment;
     private PaymentType paymentType;
-    private Date planActivatedAt;
+    @CreationTimestamp
+    private LocalDate planActivatedAt;
 
-    @PrePersist
-    private void onCreate() {
-        planActivatedAt = new Date();
+
     }
-}

@@ -16,6 +16,8 @@ public class UserServiceImplementation implements UserService {
     private UserRepository userRepository;
     @Override
     public User addUser(User user) {
+        if(userRepository.existsByPhoneNumber(user.getPhoneNumber()))
+            return null;
         return userRepository.save(user);
     }
 

@@ -32,7 +32,7 @@ public class PaymentController {
     public String addPck(@PathVariable Long phoneNumber, @PathVariable int price, @RequestBody Payment payment,
                          @RequestBody ActivatedPlan activatedPlan) {
         User user = userRepository.findByPhoneNumber(phoneNumber);
-        RecommendedPlans recommendedPlans = recommendedPlanRepository.findById(price).get();
+        RecommendedPlans recommendedPlans = recommendedPlanRepository.findByPrice(price);
         if (user.getPhoneNumber() == phoneNumber && recommendedPlans.getPrice() == price) {
             payment.setPrice(price);
             payment.setPhoneNumber(phoneNumber);
@@ -44,7 +44,7 @@ public class PaymentController {
             payment = paymentRepository.findByPhoneNumber(phoneNumber);
             activatedPlan.setUserId(payment.getUserId());
 
-            recommendedPlans = recommendedPlanRepository.findById(price).get();
+            recommendedPlans = recommendedPlanRepository.findByPrice(price);
             recommendedPlans.setPrice(recommendedPlans.getPrice());
             activatedPlan.setPlanTitle(recommendedPlans.getPlanTitle());
             System.out.println(recommendedPlans.getPlanTitle());
@@ -72,4 +72,7 @@ public class PaymentController {
         return activatedPlanRepository.findByPhoneNumber(phoneNumber);
     }
 
-}
+
+    }
+
+

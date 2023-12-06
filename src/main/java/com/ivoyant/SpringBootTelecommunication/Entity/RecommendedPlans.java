@@ -19,11 +19,8 @@ public class RecommendedPlans {
     private int price;
     private String description;
     private int validityDays;
-    @Enumerated(EnumType.STRING)
     private Talktime talktime;
-    @Enumerated(EnumType.STRING)
     private Messages messages;
-    @Enumerated(EnumType.STRING)
     private Internet internet;
 
     public String getPlanTitle() {
@@ -31,7 +28,7 @@ public class RecommendedPlans {
     }
 
     public void setPlanTitle(String planTitle) {
-        planTitle = planTitle;
+        this.planTitle = planTitle;
     }
 
     public int getPrice() {
