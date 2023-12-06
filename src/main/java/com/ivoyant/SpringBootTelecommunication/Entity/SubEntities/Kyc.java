@@ -12,4 +12,20 @@ import lombok.NoArgsConstructor;
 public class Kyc {
     private String type;
     private int idNo;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getIdNo() {
+        return idNo;
+    }
+
+    public void setIdNo(int idNo) {
+        this.idNo = idNo;
+    }
 }

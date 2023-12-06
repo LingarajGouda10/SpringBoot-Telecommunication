@@ -12,10 +12,14 @@ public class RecommendedPlansController {
 
     @Autowired
     private RecommendedPlansService recommendedPlansService;
+
+
+
+
     @PostMapping("addRecommendedPlans")
     public String addRecommendedPlans(@RequestBody RecommendedPlans recommendedPlans){
         recommendedPlansService.addRecommendedPlans(recommendedPlans);
-        return "Recommended Plans added Succesfully";
+        return "Recommended Plans added Successfully";
     }
 
     @GetMapping("GetAllRecommendePlans")

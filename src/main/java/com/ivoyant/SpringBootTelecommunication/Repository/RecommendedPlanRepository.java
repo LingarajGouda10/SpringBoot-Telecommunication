@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RecommendedPlanRepository extends JpaRepository<RecommendedPlans, Integer> {
 
+    RecommendedPlans findByPrice(int price);
 }
 
